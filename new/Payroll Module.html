@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Management</title>
+
+    <style>
+        /* Basic styling for layout and colors */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+          /* Header */
+          header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 10px 10px 0px 0px;
+        }
+
+        header h1 {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .header-right {
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            border-radius: 10px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #34495e;
+            transition: background-color 0.3s ease;
+        }
+        section {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        form input[type="text"], form input[type="number"], form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        form button {
+            background-color: #030303;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #353738;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+        }
+        table thead {
+            background-color: #040404;
+            color: #fff;
+        }
+        table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+        table a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        table a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Payroll Management</h1>
+            <nav>
+                <a href="/Dashboard.html">Dashboard</a>
+                <a href="/employee.html">Employee</a>
+                <a href="/Performance Evaluation Module.html">Performance</a>
+            </nav>
+        </header>
+
+        <section class="payroll-records">
+            <h2>Add Payroll Record</h2>
+            <form action="/add-payroll" method="POST">
+                <label for="employee-id">Employee ID:</label>
+                <input type="text" id="employee-id" name="employee-id" required placeholder="Enter Employee ID">
+                
+                <label for="pay-period">Pay Period:</label>
+                <input type="text" id="pay-period" name="pay-period" required placeholder="Enter Pay Period">
+                
+                <label for="basic-salary">Basic Salary:</label>
+                <input type="number" id="basic-salary" name="basic-salary" required placeholder="Enter Basic Salary">
+                
+                <label for="allowances">Allowances:</label>
+                <input type="number" id="allowances" name="allowances" placeholder="Enter Allowances">
+                
+                <label for="deductions">Deductions:</label>
+                <input type="number" id="deductions" name="deductions" placeholder="Enter Deductions">
+                
+                <label for="net-pay">Net Pay:</label>
+                <input type="number" id="net-pay" name="net-pay" required readonly placeholder="Net Pay will be calculated">
+                
+                <button type="submit">Add Payroll Record</button>
+            </form>
+        </section>
+
+        <section class="payroll-history">
+            <h2>Payroll History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee ID</th>
+                        <th>Pay Period</th>
+                        <th>Basic Salary</th>
+                        <th>Allowances</th>
+                        <th>Deductions</th>
+                        <th>Net Pay</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>456</td>
+                        <td>123</td>
+                        <td>September 2024</td>
+                        <td>$5,000</td>
+                        <td>$200</td>
+                        <td>$50</td>
+                        <td>$5,150</td>
+                        <td>
+                            <a href="/edit-payroll/456">Edit</a> |
+                            <a href="/delete-payroll/456">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="payroll-reports">
+            <h2>Generate Payroll Report</h2>
+            <form action="/generate-report" method="POST">
+                <label for="report-period">Report Period:</label>
+                <input type="text" id="report-period" name="report-period" required placeholder="Enter Report Period">
+                
+                <label for="report-type">Report Type:</label>
+                <select id="report-type" name="report-type" required>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+                
+                <button type="submit">Generate Report</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

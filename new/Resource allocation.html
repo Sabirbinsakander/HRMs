@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Allocation</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Basic styling for resource allocation layout */
+        .resource-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .resource-section {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .resource-section h2 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resource Allocation</h1>
+            <nav>
+                <a href="/new/dashboard">Dashboard</a>
+                <a href="/new/employee">Employee Management</a>
+                <a href="/new/payroll">Payroll Management</a>
+                <a href="/new/training">Training Management</a>
+                <a href="/new/attendance">Attendance Management</a>
+                <a href="/new/notifications">Notifications</a>
+                <a href="/new/resource-allocation">Resource Allocation</a>
+                <!-- Add more navigation links as needed -->
+            </nav>
+        </header>
+
+        <!-- Allocate Resource Form -->
+        <section class="resource-section">
+            <h2>Allocate Resource</h2>
+            <form action="/allocate-resource" method="POST">
+                <label for="resource-name">Resource Name:</label>
+                <input type="text" id="resource-name" name="resource-name" required>
+                
+                <label for="employee-id">Employee ID:</label>
+                <input type="text" id="employee-id" name="employee-id" required>
+                
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" required>
+                
+                <label for="allocation-date">Allocation Date:</label>
+                <input type="date" id="allocation-date" name="allocation-date" required>
+                
+                <button type="submit">Allocate Resource</button>
+            </form>
+        </section>
+
+        <!-- Resource Usage Overview -->
+        <section class="resource-section">
+            <h2>Resource Usage Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Resource Name</th>
+                        <th>Employee ID</th>
+                        <th>Quantity</th>
+                        <th>Allocation Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Row -->
+                    <tr>
+                        <td>Printer</td>
+                        <td>123</td>
+                        <td>1</td>
+                        <td>2024-09-01</td>
+                        <td>Allocated</td>
+                        <td>
+                            <a href="/view-allocation/001">View</a> |
+                            <a href="/edit-allocation/001">Edit</a> |
+                            <a href="/delete-allocation/001">Delete</a>
+                        </td>
+                    </tr>
+                    <!-- More rows will be dynamically generated -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Resource Settings -->
+        <section class="resource-section">
+            <h2>Resource Settings</h2>
+            <form action="/update-resource-settings" method="POST">
+                <label for="resource-type">Resource Type:</label>
+                <input type="text" id="resource-type" name="resource-type" required>
+                
+                <label for="max-quantity">Max Quantity:</label>
+                <input type="number" id="max-quantity" name="max-quantity" required>
+                
+                <button type="submit">Update Settings</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

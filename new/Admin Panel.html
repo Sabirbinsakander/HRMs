@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f4f7;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .sidebar {
+            background-color: #2C3E50;
+            color: white;
+            width: 250px;
+            padding: 20px;
+            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #ECF0F1;
+        }
+
+        .sidebar nav a {
+            color: #ECF0F1;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: background 0.3s, color 0.3s;
+            font-size: 16px;
+        }
+
+        .sidebar nav a:hover {
+            background-color: #34495E;
+        }
+
+        .sidebar footer {
+            text-align: center;
+            font-size: 14px;
+            color: #95A5A6;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        .admin-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #ECF0F1;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-section h2 {
+            color: #2C3E50;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 2px solid #2C3E50;
+            padding-bottom: 10px;
+        }
+
+        .admin-section form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-section label {
+            margin-bottom: 5px;
+            color: #2C3E50;
+            font-size: 14px;
+        }
+
+        .admin-section input,
+        .admin-section select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #BDC3C7;
+            border-radius: 5px;
+            font-size: 14px;
+            background: #fff;
+            transition: border 0.3s;
+        }
+
+        .admin-section input:focus,
+        .admin-section select:focus {
+            border-color: #3498DB;
+            outline: none;
+        }
+
+        .admin-section button {
+            width: 150px;
+            padding: 10px;
+            background-color: #3498DB;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: background 0.3s;
+        }
+
+        .admin-section button:hover {
+            background-color: #2980B9;
+        }
+
+        .admin-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-section table th,
+        .admin-section table td {
+            padding: 15px;
+            border: 1px solid #BDC3C7;
+            text-align: left;
+            font-size: 14px;
+            color: #2C3E50;
+        }
+
+        .admin-section table th {
+            background-color: #2C3E50;
+            color: #ECF0F1;
+        }
+
+        .admin-section table tr:nth-child(even) {
+            background-color: #ECF0F1;
+        }
+
+        .admin-section table td button {
+            padding: 5px 10px;
+            background-color: #E74C3C;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .admin-section table td button:hover {
+            background-color: #C0392B;
+        }
+    @media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+    .main-content {
+        padding: 20px;
+    }
+    .admin-section {
+        padding: 15px;
+    }
+    .admin-section button {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Admin Panel</h1>
+        <nav>
+            <a href="/Dashboard.html">Dashboard</a>
+            <a href="/employee.html">Employee Management</a>
+            <a href="/Payroll Module.html">Payroll Management</a>
+            <a href="/Training Module.html">Training Management</a>
+            <a href="/Attendance Module.html">Attendance Management</a>
+            <a href="/Notification Module.html">Notifications</a>
+            <!-- Add more navigation links as needed -->
+        </nav>
+        <footer>&copy; 2024 Your Company</footer>
+    </div>
+
+    <div class="main-content">
+        <!-- User Management -->
+        <section class="admin-section">
+            <h2>User Management</h2>
+            <form action="/add-user" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="director">Director</option>
+                    <option value="supervisor">Supervisor</option>
+                    <!-- Add more roles if needed -->
+                </select>
+                
+                <button type="submit">Add User</button>
+                
+            </form>
+
+            <!-- User List -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Data -->
+                    <tr>
+                        <td>admin_user</td>
+                        <td>Admin</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Add more users as needed -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- System Settings -->
+        <section class="admin-section">
+            <h2>System Settings</h2>
+            <form action="/update-settings" method="POST">
+                <label for="site-title">Site Title:</label>
+                <input type="text" id="site-title" name="site-title" required>
+                
+                <label for="site-email">Site Email:</label>
+                <input type="email" id="site-email" name="site-email" required>
+                
+                <button type="submit">Update Settings</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

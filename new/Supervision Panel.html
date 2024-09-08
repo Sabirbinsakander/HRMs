@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervision Panel</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Basic styling for supervision panel layout */
+        .supervision-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .supervision-section {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .supervision-section h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Supervision Panel</h1>
+            <nav>
+                <a href="/new/dashboard">Dashboard</a>
+                <a href="/new/employee">Employee Management</a>
+                <a href="/new/attendance">Attendance Management</a>
+                <a href="/new/performance">Performance Management</a>
+                <a href="/new/training">Training Management</a>
+                <a href="/new/notifications">Notifications</a>
+                <!-- Add more navigation links as needed -->
+            </nav>
+        </header>
+
+        <!-- Team Performance -->
+        <section class="supervision-section">
+            <h2>Team Performance</h2>
+            <!-- Add team performance content here -->
+        </section>
+
+        <!-- Daily Tasks -->
+        <section class="supervision-section">
+            <h2>Daily Tasks</h2>
+            <form action="/assign-tasks" method="POST">
+                <label for="employee-id">Employee ID:</label>
+                <input type="text" id="employee-id" name="employee-id" required>
+                
+                <label for="task">Task:</label>
+                <input type="text" id="task" name="task" required>
+                
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due-date" required>
+                
+                <button type="submit">Assign Task</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Management</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+       header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 150px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }  
+        /* Basic styling for notification layout */
+        .notification-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .notification-form, .notification-history, .notification-settings {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 900px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Notification Management</h1>
+            <nav>
+                <!-- <a href="/new/Dashboard.html">Dashboard</a>
+                <a href="/new/employee">Employee</a>
+                <a href="/new/Payroll Module.html">Payroll</a>
+                <a href="/new/Performance Evaluation Module.html">Performance</a>
+                <a href="/new/Training Module.html">Training</a>
+                <a href="/new/Calendar Module.html">Calendar</a>
+                <a href="/new/Attendance Module.html">Attendance</a> -->
+                <!-- Add more navigation links as needed -->
+            </nav>
+        </header>
+
+        <!-- Send Notification Form -->
+        <section class="notification-form">
+            <h2>Send Notification</h2>
+            <form action="/send-notification" method="POST">
+                <label for="recipient">Recipient:</label>
+                <input type="text" id="recipient" name="recipient" required>
+                
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send Notification</button>
+            </form>
+        </section>
+
+        <!-- Notification History -->
+        <section class="notification-history">
+            <h2>Notification History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Recipient</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Row -->
+                    <tr>
+                        <td>001</td>
+                        <td>John Doe</td>
+                        <td>Monthly Update</td>
+                        <td>2024-09-01</td>
+                        <td>Sent</td>
+                        <td>
+                            <a href="/view-notification/001">View</a> |
+                            <a href="/delete-notification/001">Delete</a>
+                        </td>
+                    </tr>
+                    <!-- More rows will be dynamically generated -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Notification Settings -->
+        <section class="notification-settings">
+            <h2>Notification Settings</h2>
+            <form action="/update-settings" method="POST">
+                <label for="email-notifications">Email Notifications:</label>
+                <input type="checkbox" id="email-notifications" name="email-notifications">
+                
+                <label for="sms-notifications">SMS Notifications:</label>
+                <input type="checkbox" id="sms-notifications" name="sms-notifications">
+                
+                <label for="push-notifications">Push Notifications:</label>
+                <input type="checkbox" id="push-notifications" name="push-notifications">
+                
+                <button type="submit">Update Settings</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
